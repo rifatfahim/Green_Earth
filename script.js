@@ -142,7 +142,9 @@ const displayTree = (plants) => {
   const treeContainer = document.getElementById("tree-container");
   treeContainer.innerHTML = "";
 
-  plants.forEach((plant) => {
+  const recentPlants = plants.slice(0, 6);
+
+  recentPlants.forEach((plant) => {
     const cardDiv = document.createElement("div");
     cardDiv.classList.add(
       "bg-white",
@@ -156,7 +158,6 @@ const displayTree = (plants) => {
       "duration-300"
     );
 
-    // Card click opens modal only if name clicked
     cardDiv.innerHTML = `
         <img class="w-full h-42 object-cover rounded-lg mb-3" src="${plant.image}" alt="${plant.name}">
         <div class="flex flex-col flex-grow">
