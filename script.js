@@ -62,3 +62,26 @@ const updateTotal = () => {
 
   totalPriceElement.innerText = total;
 };
+
+const loadCategories = () => {
+  fetch("https://openapi.programming-hero.com/api/categories")
+    .then((res) => res.json())
+    .then((json) => displayCategories(json.categories));
+};
+
+const loadAllTree = () => {
+  removeActive();
+  const allTreesBtn = document.getElementById("all-trees-btn");
+  if (allTreesBtn) {
+    allTreesBtn.classList.add("active");
+  }
+
+  toggleSpinner(true);
+
+  fetch("https://openapi.programming-hero.com/api/plants")
+    .then((res) => res.json())
+    .then((json) => {
+      displayTree(json.plants);
+      toggleSpinner(false);
+    });
+};
