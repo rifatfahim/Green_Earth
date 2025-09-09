@@ -123,7 +123,10 @@ const displayCardDetails = (card) => {
             </div>
         </div>     
         <div>
-            <button class="w-full bg-[#15803D] text-white font-medium py-3 rounded-[999px] mt-2">Add to Cart</button>
+            <button onclick='addToCart(${JSON.stringify(card)})' 
+            class="w-full bg-[#15803D] text-white font-medium py-3 rounded-[999px] mt-2">
+        Add to Cart
+    </button>
         </div>  
     `;
 
@@ -146,32 +149,33 @@ const displayTree = (plants) => {
       "p-4",
       "rounded-lg",
       "flex",
-      "flex-col"
+      "flex-col",
+      "hover:shadow-lg",
+      "hover:scale-105",
+      "transition",
+      "duration-300"
     );
 
+    // Card click opens modal only if name clicked
     cardDiv.innerHTML = `
-        <img class="w-full h-42 object-cover rounded-lg mb-3" src="${
-          plant.image
-        }" alt="${plant.name}">
+        <img class="w-full h-42 object-cover rounded-lg mb-3" src="${plant.image}" alt="${plant.name}">
         <div class="flex flex-col flex-grow">
-            <h3 onclick="loadCardDetails(${
-              plant.id
-            })" class="font-semibold text-xl cursor-pointer">${plant.name}</h3>
+            <h3 onclick="loadCardDetails(${plant.id})" class="font-semibold text-xl cursor-pointer hover:underline">
+                ${plant.name}
+            </h3>
             <p class="text-[#1F2937] py-5">${plant.description}</p>
-            <div class="mt-auto">
-                <div class="flex justify-between mb-3">
-                    <button class="text-[#15803D] bg-[#DCFCE7] py-1 px-3 rounded-[400px]">${
-                      plant.category
-                    }</button>
-                    <p><span>৳</span>${plant.price}</p>
-                </div>
-                <button onclick='addToCart(${JSON.stringify(
-                  plant
-                )})' class="w-full bg-[#15803D] text-white font-medium py-3 rounded-[999px] mt-2">Add to Cart</button>
+            <div class="mt-auto flex justify-between mb-3">
+                <button class="text-[#15803D] bg-[#DCFCE7] py-1 px-3 rounded-[400px] cursor-default">
+                    ${plant.category}
+                </button>
+                <p><span>৳</span>${plant.price}</p>
             </div>
+            <button onclick='event.stopPropagation(); addToCart(${JSON.stringify(plant)});' 
+                    class="w-full bg-[#15803D] text-white font-medium py-3 rounded-[999px] mt-2 cursor-pointer">
+                Add to Cart
+            </button>
         </div>
-            
-        `;
+    `;
 
     treeContainer.append(cardDiv);
   });
