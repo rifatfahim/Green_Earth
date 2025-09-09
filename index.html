@@ -76,7 +76,47 @@
             <img class="hidden md:block" src="./assets/hero-leaf2.png" alt="">
         </div>
     </section>
+     <section class="bg-[#F0FDF4] py-[100px]">
+        <div class="w-10/12 mx-auto">
+            <h2 class="text-center font-semibold text-3xl text-[#1F2937] mb-10">Choose Your Trees</h2>
+            
+            <div class="flex flex-col md:flex-row justify-center md:justify-between p-4 rounded gap-5">
+                <!-- category section -->
+                <div class="w-full md:w-[250px]">
+                    <h2 class="text-xl font-bold mb-3">Categories</h2>
+                    <ul id="categories-container" class="space-y-2">
 
+                    </ul>
+                </div>
+
+                <!-- Tree section -->
+                <div class="w-full md:w-[1090px] mx-auto">
+                    <div id="loading-spinner" class="hidden w-full text-center py-20">
+                        <div class="animate-spin rounded-full h-16 w-16 border-b-4 border-green-700 mx-auto"></div>
+                    </div>
+
+                    <div id="tree-container" class="grid grid-cols-1 md:grid-cols-3 justify-center gap-7">
+                    </div>
+                </div>
+
+
+                <!-- Cart section -->
+                <div class="my-cart bg-white w-full md:w-[350px] p-4 rounded-2xl space-y-2">
+                    <h2 class="font-semibold text-xl">Your Cart</h2>
+
+                    <div id="cart-items-container" class="space-y-2">
+
+                    </div>
+
+                    <div class="flex justify-between font-medium items-center">
+                        <h3>Total:</h3>
+                        <p><span>৳</span><span id="total-price">0</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 </body>
 
 
